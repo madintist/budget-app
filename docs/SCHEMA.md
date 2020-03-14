@@ -24,6 +24,16 @@ CREATE TABLE budgets(
 );
 ```
 
+### `statuses`
+
+```sql
+CREATE TABLE statuses(
+  id INTEGER,
+  name TEXT,
+  PRIMARY KEY (id)
+);
+```
+
 ### `transactions`
 
 ```sql
@@ -33,10 +43,12 @@ CREATE TABLE transactions(
   merchant TEXT,
   account_id INTEGER,
   budget_id INTEGER,
+  status_id INTEGER,
   debit REAL,
   credit REAL,
   PRIMARY KEY (id),
   FOREIGN KEY (account_id) REFERENCES accounts(id),
-  FOREIGN KEY (budget_id) REFERENCES budgets(id)
+  FOREIGN KEY (budget_id) REFERENCES budgets(id),
+  FOREIGN KEY (status_id) REFERENCES statuses(id)
 );
 ```
