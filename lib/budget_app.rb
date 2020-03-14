@@ -4,11 +4,9 @@
 class BudgetApp
   def initialize(db_file = nil)
     if db_file
-      # load the file
-      true
+      load_db_file db_file
     else
-      # set up a new db file
-      false
+      create_db_file
     end
   end
 
@@ -20,5 +18,9 @@ class BudgetApp
     # create a new db with filename
     # add tables to db
     # done!
+  end
+
+  def load_db_file(filename)
+    # TODO
   end
 end
