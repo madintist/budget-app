@@ -3,7 +3,7 @@ require "sqlite3"
 class Sql
   def initialize(db=nil)
     if db
-      @db = db
+      @db = load_db db
     else
       @db = create_db
     end
@@ -13,6 +13,14 @@ class Sql
 
   private
 
+  @create_accounts_table_query = <<-SQL
+    CREATE TABLE accounts(
+      id INTEGER,
+      name TEXT,
+      PRIMARY KEY (id)
+    );
+  SQL
+
   def create_db()
     db = SQLite3::Database.new "finance.db"
     create_accounts_table db
@@ -20,12 +28,10 @@ class Sql
   end
 
   def create_accounts_table(db)
-    db.execute <<-SQL
-      CREATE TABLE accounts(
-        id INTEGER,
-        name TEXT,
-        PRIMARY KEY (id)
-      );
-    SQL
+    db.execute @create_accounts_table_query
+  end
+
+  def load_db(db)
+    SQLite3::Database.new db
   end
 end
