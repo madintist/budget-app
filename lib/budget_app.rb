@@ -11,4 +11,14 @@ class BudgetApp
       false
     end
   end
+
+  private
+
+  def create_db_file
+    # load in the sqlite3 controller
+    # ask user for the filename
+    # create a new db with filename
+    # add tables to db
+    # done!
+  end
 end
