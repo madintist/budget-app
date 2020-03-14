@@ -1,6 +1,14 @@
 require "sqlite3"
 
 class Sql
+  @@create_accounts_table_query = <<~SQL.strip
+    CREATE TABLE accounts(
+      id INTEGER,
+      name TEXT,
+      PRIMARY KEY (id)
+    );
+  SQL
+
   def initialize(db=nil)
     if db
       @db = load_db db
@@ -13,14 +21,6 @@ class Sql
 
   private
 
-  @create_accounts_table_query = <<-SQL
-    CREATE TABLE accounts(
-      id INTEGER,
-      name TEXT,
-      PRIMARY KEY (id)
-    );
-  SQL
-
   def create_db()
     db = SQLite3::Database.new "finance.db"
     create_accounts_table db
@@ -28,7 +28,7 @@ class Sql
   end
 
   def create_accounts_table(db)
-    db.execute @create_accounts_table_query
+    db.execute @@create_accounts_table_query
   end
 
   def load_db(db)
