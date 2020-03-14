@@ -4,10 +4,6 @@ Outline of the SQLite schema for budget-app.
 
 ## Tables
 
-- `accounts`
-- `budgets`
-- `transactions`
-
 ### `accounts`
 
 ```sql
