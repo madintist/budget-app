@@ -1,5 +1,2 @@
-require './account'
-
-paypal = Account.new('PayPal')
-
-p paypal.name
+require 'optparse'
+require './budget-app'
