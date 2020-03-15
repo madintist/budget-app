@@ -12,6 +12,7 @@ class DbFileHandler
   def create_db_file(filename)
     @db_file = SQLite3::Database.new filename
     setup_pragma
+    create_tables
   end
 
   def load_db_file(filename)
@@ -20,6 +21,13 @@ class DbFileHandler
   end
 
   private
+
+  def create_tables
+    @db_file.execute(@setup_queries.create_accounts_table)
+    @db_file.execute(@setup_queries.create_budgets_table)
+    @db_file.execute(@setup_queries.create_statuses_table)
+    @db_file.execute(@setup_queries.create_transactions_table)
+  end
 
   def setup_pragma
     @db_file.execute(@setup_queries.enable_foreign_keys)
