@@ -1,5 +1,5 @@
 # frozen-string-literal: true
 
-require_relative './budget-app'
+require_relative './budget_app'
 
 BudgetApp.new
