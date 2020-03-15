@@ -5,7 +5,9 @@ require_relative './setup_queries.rb'
 
 # This is how we interface with the budget database
 class DbFileHandler
-  include SetupQueries
+  def initialize
+    @setup_queries = SetupQueries.new
+  end
 
   def create_db_file(filename)
     @db_file = SQLite3::Database.new filename
@@ -20,6 +22,6 @@ class DbFileHandler
   private
 
   def setup_pragma
-    @db_file.execute(enable_foreign_keys)
+    @db_file.execute(@setup_queries.enable_foreign_keys)
   end
 end
