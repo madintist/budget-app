@@ -10,14 +10,12 @@ class DbFileHandler
   end
 
   def create_db_file(filename)
-    @db_file = SQLite3::Database.new filename
-    setup_pragma
+    init_connection filename
     create_tables
   end
 
   def load_db_file(filename)
-    @db_file = SQLite3::Database.new filename
-    setup_pragma
+    init_connection filename
   end
 
   private
@@ -28,6 +26,12 @@ class DbFileHandler
     @db_file.execute(@setup_queries.create_statuses_table)
     @db_file.execute(@setup_queries.insert_statuses)
     @db_file.execute(@setup_queries.create_transactions_table)
+  end
+
+  def init_connection(filename)
+    @db_file = SQLite3::Database.new filename
+    @db_file.results_as_hash = true
+    setup_pragma
   end
 
   def setup_pragma
