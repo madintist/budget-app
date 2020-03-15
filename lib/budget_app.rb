@@ -17,11 +17,6 @@ class BudgetApp
   private
 
   def create_db_file
-    # load in the sqlite3 controller
-    # TODO: ask user for the filename
-    # create a new db with filename
-    # add tables to db
-    # done!
     @db_file_handler.create_db_file 'finance.bdb'
   end
 
