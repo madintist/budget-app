@@ -1,6 +1,6 @@
 # frozen-string-literal: true
 
-require './db_file_handler'
+require_relative './db_file_handler'
 
 # The main class for the BudgetApp. Instantiate to start the app!
 class BudgetApp
