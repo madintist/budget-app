@@ -29,12 +29,6 @@ class SetupQueries
         name TEXT,
         PRIMARY KEY (id)
       );
-
-      INSERT INTO statuses
-        (name)
-      VALUES
-        ('COMPLETE'),
-        ('PENDING');
     SQL
   end
 
@@ -60,6 +54,16 @@ class SetupQueries
   def enable_foreign_keys
     <<~SQL
       PRAGMA foreign_keys = ON;
+    SQL
+  end
+
+  def insert_statuses
+    <<~SQL
+      INSERT INTO statuses
+        (name)
+      VALUES
+        ('COMPLETE'),
+        ('PENDING');
     SQL
   end
 end

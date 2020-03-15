@@ -26,6 +26,7 @@ class DbFileHandler
     @db_file.execute(@setup_queries.create_accounts_table)
     @db_file.execute(@setup_queries.create_budgets_table)
     @db_file.execute(@setup_queries.create_statuses_table)
+    @db_file.execute(@setup_queries.insert_statuses)
     @db_file.execute(@setup_queries.create_transactions_table)
   end
 
