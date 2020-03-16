@@ -12,7 +12,8 @@ CREATE TABLE accounts(
   name TEXT,
   category_id INTEGER,
   PRIMARY KEY (id),
-  FOREIGN KEY (category_id) REFERENCES account_categories(id)
+  FOREIGN KEY (category_id) REFERENCES account_categories(id),
+  UNIQUE (name)
 );
 ```
 
@@ -22,7 +23,8 @@ CREATE TABLE accounts(
 CREATE TABLE account_categories(
   id INTEGER,
   name TEXT,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  UNIQUE (name)
 );
 
 INSERT INTO account_categories
@@ -41,7 +43,8 @@ VALUES
 CREATE TABLE transaction_statuses(
   id INTEGER,
   name TEXT,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  UNIQUE (name)
 );
 
 INSERT INTO transaction_statuses
@@ -66,6 +69,8 @@ CREATE TABLE transactions(
   PRIMARY KEY (id),
   FOREIGN KEY (debit_account_id) REFERENCES accounts(id),
   FOREIGN KEY (credit_account_id) REFERENCES accounts(id),
-  FOREIGN KEY (status_id) REFERENCES transaction_statuses(id)
+  FOREIGN KEY (status_id) REFERENCES transaction_statuses(id),
+  CHECK (debit >= 0),
+  CHECK (credit >= 0)
 );
 ```
