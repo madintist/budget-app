@@ -10,28 +10,45 @@ Outline of the SQLite schema for budget-app.
 CREATE TABLE accounts(
   id INTEGER,
   name TEXT,
-  PRIMARY KEY (id)
+  category_id INTEGER,
+  PRIMARY KEY (id),
+  FOREIGN KEY (category_id) REFERENCES account_categories(id)
 );
 ```
 
-### `budgets`
+### `account_categories`
 
 ```sql
-CREATE TABLE budgets(
+CREATE TABLE account_categories(
   id INTEGER,
   name TEXT,
   PRIMARY KEY (id)
 );
+
+INSERT INTO account_categories
+  (name)
+VALUES
+  ('Asset'),
+  ('Liability'),
+  ('Income'),
+  ('Expense'),
+  ('Capital');
 ```
 
-### `statuses`
+### `transaction_statuses`
 
 ```sql
-CREATE TABLE statuses(
+CREATE TABLE transaction_statuses(
   id INTEGER,
   name TEXT,
   PRIMARY KEY (id)
 );
+
+INSERT INTO transaction_statuses
+  (name)
+VALUES
+  ('COMPLETE'),
+  ('PENDING');
 ```
 
 ### `transactions`
@@ -41,14 +58,14 @@ CREATE TABLE transactions(
   id INTEGER,
   date TEXT,
   merchant TEXT,
-  account_id INTEGER,
-  budget_id INTEGER,
+  debit_account_id INTEGER,
+  credit_account_id INTEGER,
   status_id INTEGER,
   debit REAL,
   credit REAL,
   PRIMARY KEY (id),
-  FOREIGN KEY (account_id) REFERENCES accounts(id),
-  FOREIGN KEY (budget_id) REFERENCES budgets(id),
-  FOREIGN KEY (status_id) REFERENCES statuses(id)
+  FOREIGN KEY (debit_account_id) REFERENCES accounts(id),
+  FOREIGN KEY (credit_account_id) REFERENCES accounts(id),
+  FOREIGN KEY (status_id) REFERENCES transaction_statuses(id)
 );
 ```
