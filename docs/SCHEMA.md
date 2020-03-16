@@ -64,13 +64,11 @@ CREATE TABLE transactions(
   debit_account_id INTEGER,
   credit_account_id INTEGER,
   status_id INTEGER,
-  debit REAL,
-  credit REAL,
+  amount REAL,
   PRIMARY KEY (id),
   FOREIGN KEY (debit_account_id) REFERENCES accounts(id),
   FOREIGN KEY (credit_account_id) REFERENCES accounts(id),
   FOREIGN KEY (status_id) REFERENCES transaction_statuses(id),
-  CHECK (debit >= 0),
-  CHECK (credit >= 0)
+  CHECK (amount >= 0)
 );
 ```
