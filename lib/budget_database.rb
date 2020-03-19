@@ -4,7 +4,7 @@ require 'sqlite3'
 require_relative './setup_queries.rb'
 
 # This is how we interface with the budget database
-class DbFileHandler
+class BudgetDatabase
   def initialize(filename = nil)
     default_filename = 'finance.bdb'
     @setup_queries = SetupQueries.new
