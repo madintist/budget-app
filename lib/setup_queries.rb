@@ -56,6 +56,12 @@ class SetupQueries
     SQL
   end
 
+  def enable_foreign_keys
+    <<~SQL
+      PRAGMA enable_foreign_keys = ON;
+    SQL
+  end
+
   def insert_account_categories
     <<~SQL
       INSERT INTO account_categories
