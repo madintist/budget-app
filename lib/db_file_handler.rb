@@ -11,7 +11,8 @@ class DbFileHandler
 
   def create_db_file(filename)
     init_connection filename
-    create_tables
+    # TODO
+    # create_tables
   end
 
   def load_db_file(filename)
@@ -21,11 +22,7 @@ class DbFileHandler
   private
 
   def create_tables
-    @db_file.execute(@setup_queries.create_accounts_table)
-    @db_file.execute(@setup_queries.create_budgets_table)
-    @db_file.execute(@setup_queries.create_statuses_table)
-    @db_file.execute(@setup_queries.insert_statuses)
-    @db_file.execute(@setup_queries.create_transactions_table)
+    # TODO add code to run create table queries
   end
 
   def init_connection(filename)
