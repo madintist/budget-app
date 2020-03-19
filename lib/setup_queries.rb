@@ -1,8 +1,8 @@
 # frozen-string-literal: true
 
 # Queries to set up the database
-class SetupQueries
-  def create_account_categories
+module SetupQueries
+  def self.create_account_categories
     <<~SQL
       CREATE TABLE account_categories(
         id INTEGER,
@@ -13,7 +13,7 @@ class SetupQueries
     SQL
   end
 
-  def create_accounts
+  def self.create_accounts
     <<~SQL
       CREATE TABLE accounts(
         id INTEGER,
@@ -26,7 +26,7 @@ class SetupQueries
     SQL
   end
 
-  def create_transaction_statuses
+  def self.create_transaction_statuses
     <<~SQL
       CREATE TABLE transaction_statuses(
         id INTEGER,
@@ -37,7 +37,7 @@ class SetupQueries
     SQL
   end
 
-  def create_transactions
+  def self.create_transactions
     <<~SQL
       CREATE TABLE transactions(
         id INTEGER,
@@ -56,13 +56,13 @@ class SetupQueries
     SQL
   end
 
-  def enable_foreign_keys
+  def self.enable_foreign_keys
     <<~SQL
       PRAGMA enable_foreign_keys = ON;
     SQL
   end
 
-  def insert_account_categories
+  def self.insert_account_categories
     <<~SQL
       INSERT INTO account_categories
         (name)
@@ -75,7 +75,7 @@ class SetupQueries
     SQL
   end
 
-  def insert_transaction_statuses
+  def self.insert_transaction_statuses
     <<~SQL
       INSERT INTO transaction_statuses
         (name)
