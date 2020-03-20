@@ -14,14 +14,6 @@ class BudgetDatabase
                      end
 
     configure_connection
-    create_tables unless filename
-  end
-
-  private
-
-  def configure_connection
-    @db_connection.results_as_hash = true
-    @db_connection.execute(SetupQueries.enable_foreign_keys)
   end
 
   def create_tables
@@ -31,5 +23,12 @@ class BudgetDatabase
     @db_connection.execute(SetupQueries.create_transactions)
     @db_connection.execute(SetupQueries.insert_account_categories)
     @db_connection.execute(SetupQueries.insert_transaction_statuses)
+  end
+
+  private
+
+  def configure_connection
+    @db_connection.results_as_hash = true
+    @db_connection.execute(SetupQueries.enable_foreign_keys)
   end
 end
