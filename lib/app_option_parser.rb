@@ -22,6 +22,7 @@ class AppOptionParser
   private
 
   def load_options(parser)
+    AppOptions.add_account parser, @options
     AppOptions.help parser
     AppOptions.init parser, @options
     AppOptions.load parser, @options

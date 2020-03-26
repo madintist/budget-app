@@ -4,6 +4,15 @@ require_relative './constants'
 
 # All the options for this app are defined here
 module AppOptions
+  def self.add_account(parser, options)
+    doc_string = 'Add a new asset account to the database.'
+
+    parser.on('--add-account NAME', doc_string) do |account_name|
+      options[:add_account] = account_name
+      puts "Adding new asset account: #{account_name}"
+    end
+  end
+
   def self.help(parser)
     parser.on('-h', '--help', 'Print this help.') do
       puts parser
