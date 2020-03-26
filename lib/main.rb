@@ -11,9 +11,9 @@ class Main
     @parser = AppOptionParser.new
     @parser.parse ARGV
 
-    if parser.options[:load]
-      @app = BudgetApp.new parser.options[:load]
-    elsif parser.options[:init]
+    if @parser.options[:load]
+      @app = BudgetApp.new @parser.options[:load]
+    elsif @parser.options[:init]
       @app = BudgetApp.new
     end
 
