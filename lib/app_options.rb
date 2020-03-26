@@ -17,6 +17,13 @@ module AppOptions
     end
   end
 
+  def self.load(parser, options)
+    parser.on('-l', '--load DATABASE', 'Load an existing budget database.') do |database|
+      options[:load] = database
+      puts "Loading #{database}"
+    end
+  end
+
   def self.version(parser)
     parser.on('-v', '--version', 'Print the app version.') do
       puts VERSION

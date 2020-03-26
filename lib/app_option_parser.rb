@@ -24,6 +24,7 @@ class AppOptionParser
   def load_options(parser)
     AppOptions.help parser
     AppOptions.init parser, @options
+    AppOptions.load parser, @options
     AppOptions.version parser
   end
 end
