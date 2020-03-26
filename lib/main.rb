@@ -1,5 +1,9 @@
 # frozen-string-literal: true
 
+require_relative './app_option_parser'
 require_relative './budget_app'
 
-BudgetApp.new
+parser = AppOptionParser.new
+parser.parse ARGV
+
+# BudgetApp.new
