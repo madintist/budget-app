@@ -6,4 +6,6 @@ require_relative './budget_app'
 parser = AppOptionParser.new
 parser.parse ARGV
 
-# BudgetApp.new
+BudgetApp.new if parser.options[:init]
+
+exit
