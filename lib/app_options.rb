@@ -11,6 +11,12 @@ module AppOptions
     end
   end
 
+  def self.init(parser, options)
+    parser.on('-i', '--init', 'Create a new budget database.') do
+      options[:init] = true
+    end
+  end
+
   def self.version(parser)
     parser.on('-v', '--version', 'Print the app version.') do
       puts VERSION
