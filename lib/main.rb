@@ -3,13 +3,26 @@
 require_relative './app_option_parser'
 require_relative './budget_app'
 
-parser = AppOptionParser.new
-parser.parse ARGV
+# Hi!
+class Main
+  attr_reader :app
 
-if parser.options[:load]
-  BudgetApp.new parser.options[:load]
-elsif parser.options[:init]
-  BudgetApp.new
+  def initialize
+    @parser = AppOptionParser.new
+    @parser.parse ARGV
+
+    if parser.options[:load]
+      @app = BudgetApp.new parser.options[:load]
+    elsif parser.options[:init]
+      @app = BudgetApp.new
+    end
+
+    if @parser.options[:add_account]
+      @app.add_account @parser.options[:add_account]
+    end
+  end
 end
+
+Main.new
 
 exit

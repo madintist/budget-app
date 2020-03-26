@@ -25,6 +25,12 @@ class BudgetDatabase
     @db_connection.execute(SetupQueries.insert_transaction_statuses)
   end
 
+  def insert_account(account_name)
+    puts 'hi!'
+    puts account_name
+    # run insert statement here
+  end
+
   private
 
   def configure_connection

@@ -9,4 +9,8 @@ class BudgetApp
 
     @budget_database.create_tables unless db_filename
   end
+
+  def add_account(account_name)
+    @budget_database.insert_account account_name
+  end
 end
