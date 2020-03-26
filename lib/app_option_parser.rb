@@ -17,5 +17,6 @@ class AppOptionParser
 
   def load_options(parser)
     AppOptions.help parser
+    AppOptions.version parser
   end
 end
