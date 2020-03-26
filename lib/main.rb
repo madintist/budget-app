@@ -6,6 +6,10 @@ require_relative './budget_app'
 parser = AppOptionParser.new
 parser.parse ARGV
 
-BudgetApp.new if parser.options[:init]
+if parser.options[:load]
+  BudgetApp.new parser.options[:load]
+elsif parser.options[:init]
+  BudgetApp.new
+end
 
 exit
