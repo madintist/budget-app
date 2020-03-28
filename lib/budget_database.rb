@@ -1,6 +1,7 @@
 # frozen-string-literal: true
 
 require 'sqlite3'
+require_relative './sql/accounts_table.rb'
 require_relative './sql/setup_queries.rb'
 
 # This is how we interface with the budget database
@@ -33,15 +34,11 @@ class BudgetDatabase
       WHERE name = 'Asset';
     SQL
 
-    insert_account_query = <<~SQL
-      INSERT INTO accounts
-        (name, category_id)
-      VALUES
-        (?, ?);
-    SQL
-
     category = @db_connection.execute(get_category_query)[0]['id']
-    @db_connection.execute(insert_account_query, [account_name, category])
+    @db_connection.execute(
+      AccountsTable.insert_account,
+      [account_name, category]
+    )
   end
 
   private
