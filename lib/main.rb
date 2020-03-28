@@ -15,11 +15,15 @@ class Main
       @app = BudgetApp.new @parser.options[:load]
     elsif @parser.options[:init]
       @app = BudgetApp.new
+    else
+      # TODO: Make this better
+      puts 'You must either load a budget or init a new one.'
+      exit
     end
 
-    if @parser.options[:add_account]
-      @app.add_account @parser.options[:add_account]
-    end
+    return unless @parser.options[:add_account] && @app
+
+    @app.add_account @parser.options[:add_account]
   end
 end
 
