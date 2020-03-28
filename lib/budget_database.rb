@@ -25,10 +25,23 @@ class BudgetDatabase
     @db_connection.execute(SetupQueries.insert_transaction_statuses)
   end
 
-  def insert_account(account_name)
-    puts 'hi!'
-    puts account_name
-    # run insert statement here
+  def insert_asset_account(account_name)
+    get_category_query = <<~SQL
+      SELECT
+        id
+      FROM account_categories
+      WHERE name = 'Asset';
+    SQL
+
+    insert_account_query = <<~SQL
+      INSERT INTO accounts
+        (name, category_id)
+      VALUES
+        (?, ?);
+    SQL
+
+    category = @db_connection.execute(get_category_query)[0]['id']
+    @db_connection.execute(insert_account_query, [account_name, category])
   end
 
   private

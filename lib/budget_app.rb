@@ -11,6 +11,6 @@ class BudgetApp
   end
 
   def add_account(account_name)
-    @budget_database.insert_account account_name
+    @budget_database.insert_asset_account(account_name)
   end
 end
