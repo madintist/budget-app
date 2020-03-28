@@ -1,7 +1,7 @@
 # frozen-string-literal: true
 
 require 'sqlite3'
-require_relative './setup_queries.rb'
+require_relative './sql/setup_queries.rb'
 
 # This is how we interface with the budget database
 class BudgetDatabase
