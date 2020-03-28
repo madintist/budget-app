@@ -1,4 +1,4 @@
-# frozen-string-literals: true
+# frozen-string-literal: true
 
 # Queries for the `accounts` table.
 module AccountsTable
