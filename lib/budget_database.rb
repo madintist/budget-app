@@ -1,6 +1,7 @@
 # frozen-string-literal: true
 
 require 'sqlite3'
+require_relative './sql/account_categories_table.rb'
 require_relative './sql/accounts_table.rb'
 require_relative './sql/setup_queries.rb'
 
@@ -27,14 +28,11 @@ class BudgetDatabase
   end
 
   def insert_asset_account(account_name)
-    get_category_query = <<~SQL
-      SELECT
-        id
-      FROM account_categories
-      WHERE name = 'Asset';
-    SQL
+    category = @db_connection.execute(
+      AccountCategoriesTable.select_account_category,
+      ['Asset']
+    )[0]['id']
 
-    category = @db_connection.execute(get_category_query)[0]['id']
     @db_connection.execute(
       AccountsTable.insert_account,
       [account_name, category]
