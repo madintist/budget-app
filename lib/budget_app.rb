@@ -6,5 +6,11 @@ require_relative './budget_database'
 class BudgetApp
   def initialize(db_filename = nil)
     @budget_database = BudgetDatabase.new db_filename
+
+    @budget_database.create_tables unless db_filename
+  end
+
+  def add_account(account_name)
+    @budget_database.insert_asset_account(account_name)
   end
 end

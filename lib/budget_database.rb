@@ -1,7 +1,9 @@
 # frozen-string-literal: true
 
 require 'sqlite3'
-require_relative './setup_queries.rb'
+require_relative './sql/account_categories_table.rb'
+require_relative './sql/accounts_table.rb'
+require_relative './sql/setup_queries.rb'
 
 # This is how we interface with the budget database
 class BudgetDatabase
@@ -14,14 +16,6 @@ class BudgetDatabase
                      end
 
     configure_connection
-    create_tables unless filename
-  end
-
-  private
-
-  def configure_connection
-    @db_connection.results_as_hash = true
-    @db_connection.execute(SetupQueries.enable_foreign_keys)
   end
 
   def create_tables
@@ -31,5 +25,24 @@ class BudgetDatabase
     @db_connection.execute(SetupQueries.create_transactions)
     @db_connection.execute(SetupQueries.insert_account_categories)
     @db_connection.execute(SetupQueries.insert_transaction_statuses)
+  end
+
+  def insert_asset_account(account_name)
+    category = @db_connection.execute(
+      AccountCategoriesTable.select_account_category,
+      ['Asset']
+    )[0]['id']
+
+    @db_connection.execute(
+      AccountsTable.insert_account,
+      [account_name, category]
+    )
+  end
+
+  private
+
+  def configure_connection
+    @db_connection.results_as_hash = true
+    @db_connection.execute(SetupQueries.enable_foreign_keys)
   end
 end
