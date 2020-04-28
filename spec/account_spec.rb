@@ -31,5 +31,12 @@ describe Account do
     it 'takes a name argument' do
       expect(@test_account).to respond_to(:set_name).with(1).arguments
     end
+
+    it 'changes Account#name to the value of the name argument' do
+      new_name = 'Foo'
+      @test_account.set_name new_name
+
+      expect(@test_account.name).to be(new_name)
+    end
   end
 end
