@@ -5,6 +5,6 @@ class Account
     @name = name
   end
 
-  def set_name
+  def set_name(name)
   end
 end

@@ -27,5 +27,9 @@ describe Account do
     it 'is a method' do
       expect(@test_account).to respond_to(:set_name)
     end
+
+    it 'takes a name argument' do
+      expect(@test_account).to respond_to(:set_name).with(1).arguments
+    end
   end
 end
