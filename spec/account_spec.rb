@@ -15,5 +15,11 @@ describe Account do
     it 'is the name that we set with .new' do
       expect(@test_account.name).to be(account_name)
     end
+
+    it 'should not be writable' do
+      expect { @test_account.name = 'Foo' }.to raise_error(NoMethodError)
+
+      expect(@test_account.name).to be(account_name)
+    end
   end
 end
