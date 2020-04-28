@@ -4,4 +4,7 @@ class Account
   def initialize(name)
     @name = name
   end
+
+  def set_name
+  end
 end

@@ -22,4 +22,10 @@ describe Account do
       expect(@test_account.name).to be(account_name)
     end
   end
+
+  describe '#set_name(name)' do
+    it 'is a method' do
+      expect(@test_account).to respond_to(:set_name)
+    end
+  end
 end
