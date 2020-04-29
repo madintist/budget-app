@@ -16,4 +16,10 @@ describe Transaction do
       expect(@test_transaction.description).to be_a String
     end
   end
+
+  describe '#merchant' do
+    it 'is a string' do
+      expect(@test_transaction.merchant).to be_a String
+    end
+  end
 end
