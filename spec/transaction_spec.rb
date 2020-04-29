@@ -24,6 +24,10 @@ describe Transaction do
     it 'is a Date' do
       expect(@test_transaction.date).to be_a Date
     end
+
+    it 'defaults to today' do
+      expect(@test_transaction.date).to eq Date.today
+    end
   end
 
   describe '#description' do

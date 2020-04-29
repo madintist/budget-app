@@ -12,7 +12,7 @@ class Transaction
   def initialize
     @account = Account.new 'default'
     @amount = 0
-    @date = Date.new
+    @date = Date.today
     @description = ''
     @merchant = ''
   end
