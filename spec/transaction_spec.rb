@@ -7,13 +7,13 @@ describe Transaction do
 
   describe '#amount' do
     it 'is numeric' do
-      expect(@test_transaction.amount).to be_a(Numeric)
+      expect(@test_transaction.amount).to be_a Numeric
     end
   end
 
   describe '#description' do
     it 'is a string' do
-      expect(@test_transaction.description).to be_a(String)
+      expect(@test_transaction.description).to be_a String
     end
   end
 end
