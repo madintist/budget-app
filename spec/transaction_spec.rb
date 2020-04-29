@@ -1,3 +1,5 @@
+require 'date'
+
 require './lib/account'
 require './lib/transaction'
 
@@ -15,6 +17,12 @@ describe Transaction do
   describe '#amount' do
     it 'is numeric' do
       expect(@test_transaction.amount).to be_a Numeric
+    end
+  end
+
+  describe '#date' do
+    it 'is a Date' do
+      expect(@test_transaction.date).to be_a Date
     end
   end
 
