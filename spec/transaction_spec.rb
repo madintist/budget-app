@@ -9,7 +9,8 @@ describe Transaction do
       'account' => '',
       'amount' => 0,
       'budget' => '',
-      'description' => ''
+      'description' => '',
+      merchant: ''
     }
 
     @test_transaction = Transaction.new data
@@ -100,6 +101,14 @@ describe Transaction do
   describe '#merchant' do
     it 'is a string' do
       expect(@test_transaction.merchant).to be_a String
+    end
+
+    it 'is the value of data => merchant' do
+      data = { merchant: 'Messenger Coffee' }
+
+      transaction = Transaction.new data
+
+      expect(transaction.merchant).to eq data[:merchant]
     end
   end
 end
