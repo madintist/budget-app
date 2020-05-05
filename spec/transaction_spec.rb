@@ -9,8 +9,8 @@ describe Transaction do
   end
 
   describe '#account' do
-    it 'is an instance of Account' do
-      expect(@test_transaction.account).to be_an Account
+    it 'is a string' do
+      expect(@test_transaction.account).to be_a String
     end
   end
 
