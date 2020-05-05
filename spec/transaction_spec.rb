@@ -6,6 +6,7 @@ require './lib/transaction'
 describe Transaction do
   before :each do
     data = {
+      'account' => '',
       'amount' => 0
     }
 
