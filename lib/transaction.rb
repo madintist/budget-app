@@ -13,7 +13,7 @@ class Transaction
   def initialize(data)
     @account = data['account']
     @amount = data['amount']
-    @budget = ''
+    @budget = data['budget']
     @date = Date.today
     @description = ''
     @merchant = ''

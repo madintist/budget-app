@@ -7,7 +7,8 @@ describe Transaction do
   before :each do
     data = {
       'account' => '',
-      'amount' => 0
+      'amount' => 0,
+      'budget' => ''
     }
 
     @test_transaction = Transaction.new data
@@ -52,6 +53,14 @@ describe Transaction do
   describe '#budget' do
     it 'is a string' do
       expect(@test_transaction.budget).to be_a String
+    end
+
+    it 'is the value of data => budget' do
+      data = { 'budget' => 'Test Budget' }
+
+      transaction = Transaction.new data
+
+      expect(transaction.budget).to eq 'Test Budget'
     end
   end
 
