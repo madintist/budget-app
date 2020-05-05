@@ -8,7 +8,8 @@ describe Transaction do
     data = {
       'account' => '',
       'amount' => 0,
-      'budget' => ''
+      'budget' => '',
+      'description' => ''
     }
 
     @test_transaction = Transaction.new data
@@ -85,6 +86,14 @@ describe Transaction do
   describe '#description' do
     it 'is a string' do
       expect(@test_transaction.description).to be_a String
+    end
+
+    it 'is the value of data => description' do
+      data = { 'description' => 'lorem ipsum dolor' }
+
+      transaction = Transaction.new data
+
+      expect(transaction.description).to be data['description']
     end
   end
 

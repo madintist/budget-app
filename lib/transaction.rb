@@ -15,7 +15,7 @@ class Transaction
     @amount = data['amount']
     @budget = data['budget']
     @date = data['date'] || Date.today
-    @description = ''
+    @description = data['description']
     @merchant = ''
   end
 end
