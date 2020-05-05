@@ -11,11 +11,11 @@ class Transaction
   attr_reader :merchant
 
   def initialize(data)
-    @account = data['account']
-    @amount = data['amount']
-    @budget = data['budget']
-    @date = data['date'] || Date.today
-    @description = data['description']
+    @account = data[:account]
+    @amount = data[:amount]
+    @budget = data[:budget]
+    @date = data[:date] || Date.today
+    @description = data[:description]
     @merchant = data[:merchant]
   end
 end
