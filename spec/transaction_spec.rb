@@ -20,6 +20,12 @@ describe Transaction do
     end
   end
 
+  describe '#budget' do
+    it 'is a string' do
+      expect(@test_transaction.budget).to be_a String
+    end
+  end
+
   describe '#date' do
     it 'is a Date' do
       expect(@test_transaction.date).to be_a Date
