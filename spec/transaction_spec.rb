@@ -17,6 +17,16 @@ describe Transaction do
     it 'is a string' do
       expect(@test_transaction.account).to be_a String
     end
+
+    it 'is the value of data => account' do
+      data = {
+        'account' => 'My Account'
+      }
+
+      transaction = Transaction.new data
+
+      expect(transaction.account).to eq 'My Account'
+    end
   end
 
   describe '#amount' do

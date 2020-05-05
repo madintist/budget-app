@@ -11,7 +11,7 @@ class Transaction
   attr_reader :merchant
 
   def initialize(data)
-    @account = ''
+    @account = data['account'] || ''
     @amount = 0
     @budget = ''
     @date = Date.today
