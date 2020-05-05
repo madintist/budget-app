@@ -5,7 +5,10 @@ require './lib/transaction'
 
 describe Transaction do
   before :each do
-    data = {}
+    data = {
+      'amount' => 0
+    }
+
     @test_transaction = Transaction.new data
   end
 
@@ -32,6 +35,16 @@ describe Transaction do
   describe '#amount' do
     it 'is numeric' do
       expect(@test_transaction.amount).to be_a Numeric
+    end
+
+    it 'is the value of data => amount' do
+      data = {
+        'amount' => 5
+      }
+
+      transaction = Transaction.new data
+
+      expect(transaction.amount).to eq 5
     end
   end
 
