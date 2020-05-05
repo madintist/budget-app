@@ -72,6 +72,14 @@ describe Transaction do
     it 'defaults to today' do
       expect(@test_transaction.date).to eq Date.today
     end
+
+    it 'is the value of data => date' do
+      data = { 'date' => Date.new(2020, 1, 1) }
+
+      transaction = Transaction.new data
+
+      expect(transaction.date).to be data['date']
+    end
   end
 
   describe '#description' do
