@@ -5,7 +5,12 @@ require './lib/transaction'
 
 describe Transaction do
   before :each do
-    @test_transaction = Transaction.new
+    data = {}
+    @test_transaction = Transaction.new data
+  end
+
+  it 'should take one argument' do
+    expect(Transaction).to respond_to(:new).with(1).argument
   end
 
   describe '#account' do

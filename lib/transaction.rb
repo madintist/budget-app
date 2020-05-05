@@ -10,7 +10,7 @@ class Transaction
   attr_reader :description
   attr_reader :merchant
 
-  def initialize
+  def initialize(data)
     @account = ''
     @amount = 0
     @budget = ''
