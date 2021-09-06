@@ -11,4 +11,4 @@ CREATE TABLE IF NOT EXISTS transactions (
 		REFERENCES accounts (id)
 			ON DELETE RESTRICT
 			ON UPDATE CASCADE
-)
+);
