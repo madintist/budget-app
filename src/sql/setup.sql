@@ -1,3 +1,5 @@
+PRAGMA foreign_keys = ON;
+
 CREATE TABLE IF NOT EXISTS accounts (
 	id INTEGER PRIMARY KEY NOT NULL,
 	name TEXT NOT NULL,
