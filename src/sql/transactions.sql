@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS transactions (
-	id INTEGER PRIMARY KEY NOT NULL,
+	id INTEGER NOT NULL PRIMARY KEY,
 	date INTEGER NOT NULL,
 	transaction_number INTEGER, -- Used for check numbers, primarily
 	description VARCHAR(255) NOT NULL,
