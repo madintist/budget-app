@@ -1,12 +1,12 @@
 CREATE TABLE IF NOT EXISTS accounts (
-	id INTEGER NOT NULL PRIMARY KEY,
+	id INTEGER PRIMARY KEY NOT NULL,
 	name TEXT NOT NULL,
 	type INTEGER NOT NULL, -- Asset / Liability / etc. will be mapped based on integers
 	initial_balance DECIMAL(10, 2) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS transactions (
-	id INTEGER NOT NULL PRIMARY KEY,
+	id INTEGER PRIMARY KEY NOT NULL,
 	date INTEGER NOT NULL,
 	transaction_number INTEGER, -- Used for check numbers, primarily
 	description VARCHAR(255) NOT NULL,
