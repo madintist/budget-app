@@ -7,11 +7,11 @@ CREATE TABLE IF NOT EXISTS accounts (
 
 CREATE TABLE IF NOT EXISTS transactions (
 	id INTEGER PRIMARY KEY NOT NULL,
-	date INTEGER NOT NULL,
+	date INTEGER DEFAULT CURRENT_DATE NOT NULL,
 	transaction_number INTEGER, -- Used for check numbers, primarily
 	description VARCHAR(255) NOT NULL,
 	account_id INTEGER NOT NULL,
-	reconciled BOOLEAN NOT NULL,
+	reconciled BOOLEAN DEFAULT FALSE NOT NULL,
 	credit DECIMAL(10, 2) NOT NULL,
 	debit DECIMAL(10, 2) NOT NULL,
 
